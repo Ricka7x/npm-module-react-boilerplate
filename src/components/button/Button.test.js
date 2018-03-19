@@ -17,6 +17,7 @@ describe('Button', () => {
   it('renders correct text provided as children', () => {
     expect(button.text()).toBe('world')
   })
+
   it('calls function on click', () => {
     button.find('button').simulate('click')
     expect(mockClick).toBeCalled()

@@ -62,5 +62,6 @@ module.exports = {
     contentBase: path.join(__dirname, 'docs'),
     port: 3000,
     open: true
-  }
+  },
+  devtool: 'cheap-module-eval-source-map'
 }
