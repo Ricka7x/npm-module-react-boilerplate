@@ -12,22 +12,41 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader'
-        }
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
+        oneOf: [
           {
-            loader: 'postcss-loader',
+            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+            loader: 'url-loader',
             options: {
-              ident: 'postcss',
-              plugins: () => [precss(), autoprefixer()]
+              limit: 10000,
+              name: 'static/media/[name].[ext]'
+            }
+          },
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: 'babel-loader'
+            }
+          },
+          {
+            test: /\.css$/,
+            use: [
+              'style-loader',
+              { loader: 'css-loader', options: { importLoaders: 1 } },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  ident: 'postcss',
+                  plugins: () => [precss(), autoprefixer()]
+                }
+              }
+            ]
+          },
+          {
+            exclude: [/\.js$/, /\.html$/, /\.json$/],
+            loader: 'file-loader',
+            options: {
+              name: 'static/media/[name].[hash:8].[ext]'
             }
           }
         ]
