@@ -2,7 +2,7 @@
   "name": "npm-module-react",
   "version": "0.1.0",
   "description": "npm module boilerplate for react",
-  "main": "src/index.js",
+  "main": "dist/$npm_package_name",
   "dependencies": {
     "get-stdin": "^5.0.1",
     "react": "^16.2.0",
@@ -60,15 +60,14 @@
   "homepage": "https://github.com/Ricka7x/npm-module-react-boilerplate#readme",
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/config/jest/fileMock.js",
       "\\.(css|less|scss|sass)$": "<rootDir>/config/jest/styleMock.js"
     },
     "setupFiles": [
       "<rootDir>/config/jest/tempPolyfills.js",
       "<rootDir>/config/jest/setupTests.js"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }

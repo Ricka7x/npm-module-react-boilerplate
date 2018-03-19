@@ -8,7 +8,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: `${process.env.npm_package_name}.js`,
     publicPath: '/'
   },
   devtool: 'source-map',
@@ -39,5 +39,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin('styles.css')]
+  plugins: [new ExtractTextPlugin(`${process.env.npm_package_name}.css`)]
 }
