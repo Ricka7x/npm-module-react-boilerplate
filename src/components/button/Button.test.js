@@ -4,16 +4,27 @@ import Button from './Button'
 
 describe('Button', () => {
   const mockClick = jest.fn()
-  const button = shallow(<Button onClick={mockClick}>world</Button>)
+  const props = { onClick: mockClick, children: 'world' }
+  const button = shallow(<Button {...props} />)
 
-  it('renders correctly', () => {
+  it('matches snapshot', () => {
     expect(button).toMatchSnapshot()
   })
+
+  it('renders correctly', () => {
+    expect(button.find('button').length).toBe(1)
+  })
   it('renders correct text provided as children', () => {
-    expect(button.props().children).toBe('world')
+    expect(button.text()).toBe('world')
   })
   it('calls function on click', () => {
     button.find('button').simulate('click')
+    expect(mockClick).toBeCalled()
+  })
+
+  it("doesn't call function when no function is passed", () => {
+    const newbutton = shallow(<Button>hi</Button>)
+    newbutton.find('button').simulate('click')
     expect(mockClick).toBeCalled()
   })
 })

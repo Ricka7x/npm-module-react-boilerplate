@@ -45,6 +45,7 @@
   },
   "scripts": {
     "test": "jest --watch",
+    "coverage": "jest --coverage",
     "start": "webpack-dev-server --mode development --config webpack.dev.js",
     "prebuild": "rimraf ./dist",
     "build": "webpack --mode production --config webpack.prod.js"
@@ -61,16 +62,19 @@
   },
   "homepage": "https://github.com/Ricka7x/npm-module-react-boilerplate#readme",
   "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/components/**/*.{js,jsx}",
+      "!**/node_modules/**"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/config/jest/fileMock.js",
       "\\.(css|less|scss|sass)$": "<rootDir>/config/jest/styleMock.js"
     },
     "setupFiles": [
       "<rootDir>/config/jest/tempPolyfills.js",
       "<rootDir>/config/jest/setupTests.js"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
