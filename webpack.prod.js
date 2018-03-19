@@ -8,10 +8,8 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: `${process.env.npm_package_name}.js`,
-    publicPath: '/'
+    filename: 'index.js'
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -39,5 +37,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new ExtractTextPlugin(`${process.env.npm_package_name}.css`)]
+  plugins: [new ExtractTextPlugin('styles.css')]
 }

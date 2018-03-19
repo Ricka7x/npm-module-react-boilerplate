@@ -3,7 +3,7 @@ const precss = require('precss')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './docs/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -34,8 +34,13 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      [`${process.env.npm_package_name}`]: path.resolve(__dirname, 'src')
+    }
+  },
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    contentBase: path.join(__dirname, 'docs'),
     port: 3000,
     open: true
   }
